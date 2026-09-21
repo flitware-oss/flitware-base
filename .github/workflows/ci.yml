@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          # No `cache: npm` on purpose: this repo ships no lockfile
+          # (upstream library convention, see .gitignore).
+          node-version: 22
+
+      - name: Install
+        run: npm ci || npm install
+
+      - name: Typecheck (verified baseline gate)
+        run: ./scripts/check-tsc-baseline.sh
+
+      - name: Upstream tests
+        run: npx vitest run tests
+
+      - name: Compatibility tests
+        run: npx vitest run compatibility
+
+      - name: Build
+        run: npm run build
+
+      - name: Pack inspection
+        run: |
+          npm pack --dry-run
+          npm pack
+          tar -tzf flitware-base-*.tgz
+
+      # Publishing is intentionally NOT automated yet.
+      # Future: npm Trusted Publishing (OIDC) via a manual `publish` workflow.

@@ -1,0 +1,4 @@
+node_modules/vite/dist/node/index.d.ts: error TS2307: Cannot find module 'rollup/parseAst' or its corresponding type declarations.
+tests/services/BatchService.spec.ts: error TS2339: Property 'keys' does not exist on type 'FormData'.
+tests/services/BatchService.spec.ts: error TS2339: Property 'keys' does not exist on type 'FormData'.
+tests/services/BatchService.spec.ts: error TS2339: Property 'keys' does not exist on type 'FormData'.

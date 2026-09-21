@@ -1,0 +1,63 @@
+{
+    "version": "0.26.2",
+    "name": "@flitware/base",
+    "description": "JavaScript and TypeScript SDK for Flitware Base",
+    "author": "Flitware",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/flitware-oss/flitware-base.git"
+    },
+    "homepage": "https://github.com/flitware-oss/flitware-base#readme",
+    "bugs": {
+        "url": "https://github.com/flitware-oss/flitware-base/issues"
+    },
+    "exports": {
+        ".": "./dist/flitware-base.es.mjs",
+        "./cjs": "./dist/flitware-base.cjs.js",
+        "./umd": "./dist/flitware-base.umd.js"
+    },
+    "main": "./dist/flitware-base.es.mjs",
+    "module": "./dist/flitware-base.es.mjs",
+    "react-native": "./dist/flitware-base.es.js",
+    "types": "./dist/flitware-base.es.d.mts",
+    "keywords": [
+        "flitware",
+        "flitware-base",
+        "js-sdk",
+        "javascript-sdk",
+        "pocketbase",
+        "pocketbase-js"
+    ],
+    "flitwareBase": {
+        "upstream": {
+            "project": "pocketbase/js-sdk",
+            "url": "https://github.com/pocketbase/js-sdk",
+            "version": "0.26.1",
+            "commit": "bf38e1569cf7c1459e3f0964e1937c50bce51ac8"
+        }
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "printWidth": 90,
+        "bracketSameLine": true
+    },
+    "scripts": {
+        "format": "npx prettier ./src ./tests --write",
+        "build": "rm -rf dist && rollup -c",
+        "dev": "rollup -c -w",
+        "test": "vitest",
+        "prepublishOnly": "npm run build"
+    },
+    "devDependencies": {
+        "@rollup/plugin-terser": "^0.4.3",
+        "prettier": "3.2.4",
+        "rollup": "^4.0.0",
+        "rollup-plugin-ts": "^3.0.0",
+        "typescript": "^5.1.6",
+        "vitest": "^2.0.0"
+    },
+    "overrides": {
+        "browserslist-generator": "^3.0.0"
+    }
+}
